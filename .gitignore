@@ -1,1 +1,3 @@
-Application/*.db
+**/*.db
+**/__pycache__/
+**/*.py[cod]
