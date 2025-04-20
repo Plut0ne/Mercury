@@ -1,6 +1,10 @@
 # Mercury
 Mercury è un progetto open source in Python di una applicazione per telefono dedicata a tenere traccia delle misurazioni di pressione sanguigna.
 
+# Screenshot
+![Schermata Home](Screenshot/home.png)
+![Schermata Nuova Misura](Screenshot/new%20measure.png)
+
 # Changelog
 Partendo dalla più recente versione ecco tutto il changelog. I relativi file APK si trovano nella relativa cartella. 
 ## 1.0.0 - 20/04/2025
