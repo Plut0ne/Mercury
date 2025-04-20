@@ -86,7 +86,15 @@ class LocalDatabase:
             writer = csv.writer(f)
             writer.writerow(col_names)
             writer.writerows(rows)
-            
+
+
+    def get_csv_information(self) -> tuple[list, list]:
+        self.__cur.execute("SELECT * FROM misurazioni ORDER BY data ASC")
+        rows = self.__cur.fetchall()
+        col_names = [description[0] for description in self.__cur.description]
+        
+        return (col_names, rows)
+
 
     # chiudere la connesione con il database
     def close(self) -> None:

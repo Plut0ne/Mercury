@@ -1,5 +1,6 @@
-import webbrowser
 import backend
+import csv
+import os
 from datetime import datetime
 from kivymd.app import MDApp
 from kivymd.uix.screen import Screen
@@ -8,9 +9,13 @@ from kivymd.uix.dialog import MDDialog
 from kivymd.uix.button import MDFlatButton
 from kivy.metrics import dp
 from kivy.lang import Builder
+import sys
 
-from kivy.core.window import Window # DA TOGLIERE PRIMA DELLA COMPILAZIONE
-Window.size = (360, 640) # DA TOGLIERE PRIMA DELLA COMPILAZIONE
+is_android = hasattr(sys, "getandroidapilevel")
+
+if not(is_android):
+    from kivy.core.window import Window # DA TOGLIERE PRIMA DELLA COMPILAZIONE
+    Window.size = (360, 640) # DA TOGLIERE PRIMA DELLA COMPILAZIONE
 
 # Screen che contiene tutta l'applicazione
 class MainScreen(Screen):
@@ -42,12 +47,12 @@ class MeasureTableScreen(Screen):
             pos_hint={'center_x': 0.5,'center_y': 0.5},
             column_data=
             [
-                ("Data", dp(25)),
-                ("Max", dp(8)),
-                ("Min", dp(8)),
-                ("BPM", dp(8)),
-                ("SP", dp(8)),
-                ("Pastiglia", dp(12))
+                ("Data", dp(27)),
+                ("Max", dp(10)),
+                ("Min", dp(10)),
+                ("BPM", dp(10)),
+                ("SP", dp(10)),
+                ("Pastiglia", dp(14))
             ],
             row_data = []
         )
@@ -161,10 +166,60 @@ class Mercury(MDApp):
         self.dialog.dismiss()
 
     def export_in_csv(self):
-        self.database.export_as_csv()
+        col_names, rows = self.database.get_csv_information()
+
+        if is_android:
+            try:    
+                from android.storage import primary_external_storage_path
+
+                directory = os.path.join(primary_external_storage_path(), "Download")
+                if not os.path.exists(directory):
+                    os.makedirs(directory)
+
+                percorso = os.path.join(directory, "misurazioni.csv")
+
+                with open(percorso, "w", newline='', encoding='utf-8') as f:
+                    writer = csv.writer(f)
+                    writer.writerow(col_names)
+                    writer.writerows(rows)
+
+                ok_button = MDFlatButton(text="OK", on_release=self.close_dialog)
+                self.dialog = MDDialog(title="Esportazione completata", text="Il file misurazioni.csv è stato salvato nella cartella Download.", buttons=[ok_button])
+                self.dialog.open()
+            except:
+                ok_button = MDFlatButton(text="OK", on_release=self.close_dialog)
+                self.dialog = MDDialog(title="Errore", text="Qualcosa è andato storto nell'esportazione del file CSV.", buttons=[ok_button])
+                self.dialog.open()
+        else:
+            try:
+                with open("misurazioni.csv", "w", newline='', encoding='utf-8') as f:
+                    writer = csv.writer(f)
+                    writer.writerow(col_names)
+                    writer.writerows(rows)
+
+                ok_button = MDFlatButton(text="OK", on_release=self.close_dialog)
+                self.dialog = MDDialog(title="Esportazione completata", text="Il file misurazioni.csv è stato esportato correttamente.", buttons=[ok_button])
+                self.dialog.open()
+            except:
+                ok_button = MDFlatButton(text="OK", on_release=self.close_dialog)
+                self.dialog = MDDialog(title="Errore", text="Qualcosa è andato storto nell'esportazione del file CSV.", buttons=[ok_button])
+                self.dialog.open()
 
     def open_the_repo(self):
-        webbrowser.open("https://github.com/Plut0ne/Mercury")
+        if is_android:
+            from jnius import autoclass
+            from android import activity
+
+            Intent = autoclass('android.content.Intent')
+            Uri = autoclass('android.net.Uri')
+
+            intent = Intent(Intent.ACTION_VIEW)
+            intent.setData(Uri.parse("https://github.com/Plut0ne/Mercury"))
+            currentActivity = activity._activity
+            currentActivity.startActivity(intent)
+        else:
+            import webbrowser
+            webbrowser.open("https://github.com/Plut0ne/Mercury")
         
 # Main 
 if __name__ == "__main__":

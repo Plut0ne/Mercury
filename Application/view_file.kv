@@ -114,15 +114,14 @@ MainScreen:
     padding: ["0dp", "0dp", "0dp", "20dp"]
     MDLabel:
         text: "Mercury"
-        size_hint: 0.9, None
+        size_hint: 0.9, 0.1
         pos_hint: {'center_x': 0.5,'center_y': 0.5}
         font_style: "H5"
     MDLabel:
         text: "Mercury è un progetto open source realizzato in Python grazie alla libreria Kivymd. Questa applicazione è dedicata a tenere traccia delle misurazioni di pressione sanguigna. La gestione dei dati è realizzata con SQLite3. Il codice è visibile e completamente modificabile su GitHub raggiungibile dal bottone qui in basso."
-        size_hint: 0.9, None
+        size_hint: 0.9, 0.9
         pos_hint: {'center_x': 0.5,'center_y': 0.5}
         font_style: "Body1"
-    Widget:
     MDRectangleFlatIconButton:
         icon:"github"
         text: "Vai alla Repo GitHub"
@@ -132,7 +131,6 @@ MainScreen:
 
 <NewMeasureContent@BoxLayout>:
     orientation: "vertical"
-    size_hint: 0.9, 0.93
     pos_hint: {'center_x': 0.5,'center_y': 0.5}
     padding: ["0dp", "10dp", "0dp", "10dp"]
     spacing: "10dp"
@@ -145,7 +143,7 @@ MainScreen:
         icon_right: "arrow-up"
         icon_right_color: app.theme_cls.primary_color
         pos_hint:{"center_x":0.5, "center_y":0.5}
-        size_hint_x: None
+        size_hint_x: 0.9
         width: 300
 
     MDTextField:
@@ -156,7 +154,7 @@ MainScreen:
         icon_right: "arrow-down"
         icon_right_color: app.theme_cls.primary_color
         pos_hint:{"center_x":0.5, "center_y":0.5}
-        size_hint_x: None
+        size_hint_x: 0.9
         width: 300
 
     MDTextField:
@@ -167,7 +165,7 @@ MainScreen:
         icon_right: "heart"
         icon_right_color: app.theme_cls.primary_color
         pos_hint:{"center_x":0.5, "center_y":0.5}
-        size_hint_x: None
+        size_hint_x: 0.9
         width: 300
 
     MDTextField:
@@ -178,7 +176,7 @@ MainScreen:
         icon_right: "brain"
         icon_right_color: app.theme_cls.primary_color
         pos_hint:{"center_x":0.5, "center_y":0.5}
-        size_hint_x: None
+        size_hint_x: 0.9
         width: 300
 
     BoxLayout:
@@ -212,13 +210,13 @@ MainScreen:
         MDRectangleFlatIconButton:
             icon: "check"
             text: "Conferma"
-            size_hint: 1, 1
+            size_hint: 0.9, 0.9
             pos_hint: {'center_x': 0.5,'center_y': 0.5}
             on_press: app.new_measure()
 
         MDRectangleFlatIconButton:
             icon: "keyboard-return"
             text: "Annulla"
-            size_hint: 1, 1
+            size_hint: 0.9, 0.9
             pos_hint: {'center_x': 0.5,'center_y': 0.5}
             on_press: app.reset_value()
