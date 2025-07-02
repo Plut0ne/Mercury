@@ -2,9 +2,11 @@
 Mercury è una applicazione open source per telefono dedicata a tracciare, conservare e analizzare le misurazioni di pressione sanguigna.
 
 # Screenshot
-<img src="Screenshot/screen3.jpg" alt="Screen3" width="300"/>
-<img src="Screenshot/screen2.jpg" alt="Screen2" width="300"/>
-<img src="Screenshot/screen1.jpg" alt="Screen1" width="300"/>
+<p float="left">
+  <img src="Screenshot/screen3.jpg" alt="Screen3" width="300"/>
+  <img src="Screenshot/screen2.jpg" alt="Screen2" width="300"/>
+  <img src="Screenshot/screen1.jpg" alt="Screen1" width="300"/>
+</p>
 
 # Changelog
 Partendo dalla più recente versione ecco tutto il changelog. I relativi file APK si trovano nella loro cartella dedicata.
