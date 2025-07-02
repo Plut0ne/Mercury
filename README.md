@@ -3,8 +3,8 @@ Mercury è una applicazione open source per telefono dedicata a tracciare, conse
 
 # Screenshot
 <img src="Screenshot/screen3.jpg" alt="Screen3" width="300"/>
-![Screen2](Screenshot/screen2.jpg)
-![Screen1](Screenshot/screen1.jpg)
+<img src="Screenshot/screen2.jpg" alt="Screen2" width="300"/>
+<img src="Screenshot/screen1.jpg" alt="Screen1" width="300"/>
 
 # Changelog
 Partendo dalla più recente versione ecco tutto il changelog. I relativi file APK si trovano nella loro cartella dedicata.
