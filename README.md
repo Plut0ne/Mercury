@@ -3,9 +3,9 @@ Mercury è una applicazione open source per telefono dedicata a tracciare, conse
 
 # Screenshot
 <p float="left">
-  <img src="Screenshot/screen3.jpg" alt="Screen3" width="200"/>
-  <img src="Screenshot/screen2.jpg" alt="Screen2" width="200"/>
-  <img src="Screenshot/screen1.jpg" alt="Screen1" width="200"/>
+  <img src="Screenshot/screen3.jpg" alt="Screen3" width="250"/>
+  <img src="Screenshot/screen2.jpg" alt="Screen2" width="250"/>
+  <img src="Screenshot/screen1.jpg" alt="Screen1" width="250"/>
 </p>
 
 # Changelog
